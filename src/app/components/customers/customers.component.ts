@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
@@ -13,10 +15,16 @@ export class CustomersComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nom', 'email'];
   loading : boolean = true;
   errorMessage! : string
+  searchControle = new FormControl('');
+
+ 
   
   constructor(private customerService : CustomerService) { }
 
   ngOnInit(): void {
+
+
+    
     this.customerService.getCustomers().subscribe({
       next : (data) => {
         this.customers = data;
@@ -31,6 +39,7 @@ export class CustomersComponent implements OnInit {
       }
        
     })
+    
     
   }
 

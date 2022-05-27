@@ -1,8 +1,29 @@
-<div *ngIf="errorMessage">
-    <h1 color="accent">
-        {{errorMessage}}
-    </h1>
-</div>
+<!--
+  <mat-grid-list cols="1" rowHeight="100px">
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>KeyWord</mat-label>
+          <input type="text" matInput [formControl]="searchControle"
+          placeholder="">
+        </mat-form-field>
+          <button mat-raised-button color="accent" type="submit" >Search</button>
+      </form>
+    </mat-grid-tile>
+  </mat-grid-list>
+-->
+
+
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput [formControl]="searchControle" placeholder="Ex. pat@example.com">
+  </mat-form-field>
+  <button mat-raised-button color="accent" type="submit" >Search</button>
+</form>
+
+
+
 <mat-grid-list cols="2" rowHeight="100px" *ngIf="!loading">
     <mat-grid-tile [colspan]="2" [rowspan]="4">
 <table mat-table [dataSource]="customers" class="mat-elevation-z8">
