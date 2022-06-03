@@ -21,6 +21,8 @@ import { AccountsComponent } from './components/accounts/accounts.component';
 import { CustomersComponent } from './components/customers/customers.component'
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerService } from './services/customer.service';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { CustomerService } from './services/customer.service';
     MatInputModule,
     MatProgressSpinnerModule,
     MatGridListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ReactiveFormsModule
+    
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]
