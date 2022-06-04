@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { catchError, Observable, throwError } from 'rxjs';
+
 import { CustomerService } from 'src/app/services/customer.service';
+import { Customer } from '../../models/Customer';
 
 @Component({
   selector: 'app-customers',
@@ -11,35 +13,38 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class CustomersComponent implements OnInit {
 
-  customers: any;
+  customers?: Observable<Array<Customer>>;
   displayedColumns: string[] = ['id', 'nom', 'email'];
   loading : boolean = true;
   errorMessage! : string
-  searchControle = new FormControl('');
+  customerGroup! : FormGroup;
+  
 
  
   
-  constructor(private customerService : CustomerService) { }
+  constructor(private customerService : CustomerService, private fb : FormBuilder) { }
 
   ngOnInit(): void {
 
-
-    
-    this.customerService.getCustomers().subscribe({
-      next : (data) => {
-        this.customers = data;
-        this.loading = false
-      },
-      error : (err) =>
-      {
-        //console.log(err);
-        this.loading = false
-        this.errorMessage = err.message;
-        console.log(err)
-      }
-       
+    this.customerGroup = this.fb.group({
+      keyword : this.fb.control("")
     })
-    
+
+    this.handelForme()
+  }
+
+  handelForme()
+  {
+    let kw = this.customerGroup.value.keyword
+    console.log(kw)
+    this.customers = this.customerService.searchCustomers(kw).pipe(
+      catchError(err => {
+        this.errorMessage = err.message
+        return throwError(err)
+      })
+    )
+
+
     
   }
 
