@@ -19,4 +19,12 @@ export class CustomerService {
   public searchCustomers(kw : string) : Observable<Array<Customer>>{
     return this.http.get<Array<Customer>>(environment.url+"customers/search?keyword="+kw)
   }
+
+  public saveCustomer(customer : Customer) : Observable<Customer>{
+    return this.http.post<Customer>(environment.url+"customers", customer)
+  }
+
+  public deleteCustomer(id : number){
+    return this.http.delete(environment.url+"customers/"+id)
+  }
 }
