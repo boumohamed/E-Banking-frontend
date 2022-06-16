@@ -22,6 +22,7 @@ import { CustomersComponent } from './components/customers/customers.component'
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerService } from './services/customer.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NewCustomerComponent } from './components/new-customer/new-customer.component';
 
 
 
@@ -30,7 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     NavBarComponent,
     AccountsComponent,
-    CustomersComponent
+    CustomersComponent,
+    NewCustomerComponent
   ],
   imports: [
     HttpClientModule,

@@ -16,6 +16,7 @@
 
 
 <div class="container p-4">
+  <a class="nav-link" routerLink="/customers/add">New Cutomer</a>
   <form [formGroup]="customerGroup" (ngSubmit)="handelForme()">
     <div class="form-group">
       <label for="exampleInputEmail1">Keyword</label>
@@ -33,6 +34,7 @@
         <th scope="col">#</th>
         <th scope="col">Nom</th>
         <th scope="col">Email</th>
+
       </tr>
     </thead>
     <tbody>
@@ -40,6 +42,8 @@
         <td>{{c.id}}</td>
         <td>{{c.nom}}</td>
         <td>{{c.email}}</td>
+        <td><button class="btn btn-outline-secondary">Update</button></td>
+        <td><button (click)="deleteCustomer(c)" class="btn btn-outline-danger">Delete</button></td>
       </tr>
     </tbody>
   </table>
