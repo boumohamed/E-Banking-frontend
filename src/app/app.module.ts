@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomerService } from './services/customer.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewCustomerComponent } from './components/new-customer/new-customer.component';
+import { FooterComponent } from './componenets/footer/footer.component';
 
 
 
@@ -32,7 +33,8 @@ import { NewCustomerComponent } from './components/new-customer/new-customer.com
     NavBarComponent,
     AccountsComponent,
     CustomersComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    FooterComponent
   ],
   imports: [
     HttpClientModule,

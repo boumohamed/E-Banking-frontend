@@ -16,37 +16,39 @@
 
 
 <div class="container p-4">
-  <a class="nav-link" routerLink="/customers/add">New Cutomer</a>
+  <h5 class="text-center"><a class="nav-link" routerLink="/customers/add">New Cutomer <i class="fa-solid fa-user-plus"></i></a></h5>
   <form [formGroup]="customerGroup" (ngSubmit)="handelForme()">
     <div class="form-group">
-      <label for="exampleInputEmail1">Keyword</label>
-      <input type="text" formControlName="keyword"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="keyword">
+      <input type="text" formControlName="keyword"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Find a Customer...">
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-outline-primary mt-2">Search</button>
+      <button type="submit" class="btn btn-outline-primary mt-2"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
   </form>
   
+  <div class="table-responsive mt-3">
+    <table class="table table-hover">
+      <thead class="text-white">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Email</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let c of customers | async">
-        <td>{{c.id}}</td>
-        <td>{{c.nom}}</td>
-        <td>{{c.email}}</td>
-        <td><button class="btn btn-outline-secondary">Update</button></td>
-        <td><button (click)="deleteCustomer(c)" class="btn btn-outline-danger">Delete</button></td>
-      </tr>
-    </tbody>
-  </table>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of customers | async">
+          <td class="cell">{{c.id}}</td>
+          <td class="cell">{{c.nom}}</td>
+          <td class="cell">{{c.email}}</td>
+          <td><button class="btn btn-outline-primary">Update</button></td>
+          <td><button (click)="deleteCustomer(c)" class="btn btn-outline-danger">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 
