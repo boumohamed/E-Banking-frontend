@@ -14,7 +14,7 @@ import { Customer } from '../../models/Customer';
 export class CustomersComponent implements OnInit {
 
   customers?: Observable<Array<Customer>>;
-  displayedColumns: string[] = ['id', 'nom', 'email'];
+  
   loading : boolean = true;
   errorMessage! : string
   customerGroup! : FormGroup;

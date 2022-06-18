@@ -24,6 +24,7 @@ import { CustomerService } from './services/customer.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewCustomerComponent } from './components/new-customer/new-customer.component';
 import { FooterComponent } from './componenets/footer/footer.component';
+import { AccountService } from './services/account.service';
 
 
 
@@ -54,7 +55,7 @@ import { FooterComponent } from './componenets/footer/footer.component';
     ReactiveFormsModule
     
   ],
-  providers: [CustomerService],
+  providers: [CustomerService,AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
