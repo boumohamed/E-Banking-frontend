@@ -12,6 +12,7 @@ import { AccountService } from 'src/app/services/account.service';
 export class AccountsComponent implements OnInit {
 
   AccountGroup! : FormGroup;
+  OperationsGroup! : FormGroup;
   Account$? : Observable<Account>;
   currentPage : number = 0;
   pageSize : number = 5;
@@ -22,6 +23,24 @@ export class AccountsComponent implements OnInit {
     this.AccountGroup = this.fb.group({
       accountId : this.fb.control("")
     })
+    this.OperationsGroup = this.fb.group({
+      operationType : this.fb.control("Credit"),
+      amount : this.fb.control(0),
+      accountIdDestination : this.fb.control(""),
+      description : this.fb.control("")
+    })
+  }
+
+  goToPage(page : number)
+  {
+    this.currentPage = page;
+    this.handelForme();
+  }
+
+  handleOperationForm()
+  {
+    //console.log(this.OperationsGroup.value)
+    let accountId = this.AccountGroup.value.accountId;
   }
 
   handelForme()
