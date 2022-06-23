@@ -24,6 +24,9 @@ import { CustomerService } from './services/customer.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewCustomerComponent } from './components/new-customer/new-customer.component';
 import { FooterComponent } from './componenets/footer/footer.component';
+import { AccountService } from './services/account.service';
+import { CustomerAccountsComponent } from './customer-accounts/customer-accounts.component';
+import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
 
 
 
@@ -34,7 +37,9 @@ import { FooterComponent } from './componenets/footer/footer.component';
     AccountsComponent,
     CustomersComponent,
     NewCustomerComponent,
-    FooterComponent
+    FooterComponent,
+    CustomerAccountsComponent,
+    UpdateCustomerComponent
   ],
   imports: [
     HttpClientModule,
@@ -54,7 +59,7 @@ import { FooterComponent } from './componenets/footer/footer.component';
     ReactiveFormsModule
     
   ],
-  providers: [CustomerService],
+  providers: [CustomerService,AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

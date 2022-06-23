@@ -16,6 +16,10 @@ export class CustomerService {
     return this.http.get<Array<Customer>>(environment.url+"customers")
   }
 
+  public getCustomer(customerId : string) : Observable<Customer>{
+    return this.http.get<Customer>(environment.url+"customers/" + customerId)
+  }
+
   public searchCustomers(kw : string) : Observable<Array<Customer>>{
     return this.http.get<Array<Customer>>(environment.url+"customers/search?keyword="+kw)
   }
@@ -26,5 +30,9 @@ export class CustomerService {
 
   public deleteCustomer(id : number){
     return this.http.delete(environment.url+"customers/"+id)
+  }
+
+  public updateCustomer(customer : Customer) : Observable<Customer>{
+    return this.http.put<Customer>(environment.url+"customers/" + customer.id, customer)
   }
 }

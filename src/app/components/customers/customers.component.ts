@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 import { catchError, map, Observable, throwError } from 'rxjs';
 
 import { CustomerService } from 'src/app/services/customer.service';
@@ -14,7 +15,7 @@ import { Customer } from '../../models/Customer';
 export class CustomersComponent implements OnInit {
 
   customers?: Observable<Array<Customer>>;
-  displayedColumns: string[] = ['id', 'nom', 'email'];
+  
   loading : boolean = true;
   errorMessage! : string
   customerGroup! : FormGroup;
@@ -22,7 +23,7 @@ export class CustomersComponent implements OnInit {
 
  
   
-  constructor(private customerService : CustomerService, private fb : FormBuilder) { }
+  constructor(private customerService : CustomerService, private fb : FormBuilder, private router : Router) { }
 
   ngOnInit(): void {
 
@@ -58,16 +59,25 @@ export class CustomersComponent implements OnInit {
   handelForme()
   {
     let kw = this.customerGroup.value.keyword
-    console.log(kw)
+    //console.log(kw)
     this.customers = this.customerService.searchCustomers(kw).pipe(
       catchError(err => {
         this.errorMessage = err.message
         return throwError(err)
       })
-    )
+    )    
+  }
 
+  customerAccounts(customer : Customer)
+  {
+    let id = customer.id;
+    this.router.navigateByUrl("/customers/" + id + "/accounts", {state : customer})
+  }
 
-    
+  updateCustomer(customer : Customer)
+  {
+    let id = customer.id;
+    this.router.navigateByUrl("/customers/update/"  + id);
   }
 
 }
