@@ -7,7 +7,7 @@
       </div>
     </form>
 
-   <ng-container *ngIf="Account$ | async as account">
+   <ng-container *ngIf="Account$ | async as account; else erroTemplate">
 
     <div class="container">
         <div class="row">
@@ -74,4 +74,9 @@
 
     
    </ng-container>
+   <ng-template #erroTemplate>
+      <ng-container *ngIf="errorMessage && AccountGroup.value.accountId">
+        <div class="text-danger text-center mt-4"> <h5> Account Not Found </h5></div>
+      </ng-container>
+   </ng-template>
 </div>

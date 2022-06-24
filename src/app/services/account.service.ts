@@ -15,4 +15,30 @@ export class AccountService {
   {
     return this.http.get<Account>(environment.url+"accounts/"+accountId+"/pageoperations?page="+page+"&size="+size)
   }
+
+  public debit(accountId : String, amount : number, desc : String) : Observable<any>
+  {
+    let data = {accountId : accountId, amount : amount, description : desc}
+    
+    return this.http.post(environment.url+"accounts/debit", data)
+  }
+
+  public credit(accountId : String, amount : number, desc : String) : Observable<any>
+  {
+    let data = {accountId : accountId, amount : amount, description : desc}
+    return this.http.post(environment.url+"accounts/credit", data)
+  }
+
+  public transfer(accountIdS : String, accountIdD : String, amount : number, desc : String) : Observable<any>
+  {
+    let data = {accountSource : accountIdS, accountDestination : accountIdD, amount : amount, description : desc}
+    return this.http.post(environment.url+"accounts/transfer", data)
+  }
+
+  public getCustomerAccounts(customerId : string) : Observable<Array<Account>>
+  {
+    
+    return this.http.get<Array<Account>>(environment.url+"customers/" + customerId + "/accounts")
+  }
+  
 }

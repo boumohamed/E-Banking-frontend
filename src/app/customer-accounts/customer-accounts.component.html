@@ -1,0 +1,55 @@
+<div class="container">
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-12">
+          <!-- Section Heading-->
+          <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+            <h3>Welcome Again, <span class="text-primary">{{customer.nom}}</span></h3>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <!-- Single Advisor-->
+        <div class="col-3">
+          <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+            <!-- Team Thumb-->
+            <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                <!-- Bouzri Mohamed's Photo-->
+                <!-- https://media-exp1.licdn.com/dms/image/C4D03AQEl1Bmwu4qbag/profile-displayphoto-shrink_200_200/0/1651076449107?e=2147483647&v=beta&t=wQiZys9nfq6yMRlaCeMWD17KYDKZe3sLhh5I91Dv7qg -->
+              <!-- Social Info-->
+            </div>
+            <!-- Team Details-->
+            <div class="single_advisor_details_info">
+              <h6>{{customer.nom}}</h6>
+              <p class="designation">Loyal Customer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-8">
+            <div class="table-responsive mt-3">
+                <table class="table table-hover">
+                  <thead class="text-white">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Balance</th>
+                      <th scope="col">Account Type</th>
+                      <th scope="col"></th>
+            
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let a of customerAccounts$ | async">
+                      <td class="cell">{{a.id}}</td>
+                      <td class="cell">{{a.balance | number : '2.2-2'}} Mad</td>
+                      <td class="cell">{{a.type}}</td>
+                      <td class="cell"><button (click)="handlOperations(a)" class="btn btn-outline-primary">Operations <i class="fa-solid fa-arrow-right"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+</div>
+
+

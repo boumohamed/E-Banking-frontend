@@ -25,6 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NewCustomerComponent } from './components/new-customer/new-customer.component';
 import { FooterComponent } from './componenets/footer/footer.component';
 import { AccountService } from './services/account.service';
+import { CustomerAccountsComponent } from './customer-accounts/customer-accounts.component';
+import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
 
 
 
@@ -35,7 +37,9 @@ import { AccountService } from './services/account.service';
     AccountsComponent,
     CustomersComponent,
     NewCustomerComponent,
-    FooterComponent
+    FooterComponent,
+    CustomerAccountsComponent,
+    UpdateCustomerComponent
   ],
   imports: [
     HttpClientModule,

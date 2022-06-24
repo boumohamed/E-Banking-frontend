@@ -1,0 +1,49 @@
+<mat-grid-list cols="2" rowHeight="100px" *ngIf="loading; else formtemplate">
+    <mat-grid-tile [colspan]="2" [rowspan]="6">
+      <mat-spinner color="primary"></mat-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<ng-container>
+<ng-template #formtemplate>
+    <div class="container p-4">
+        <a class="nav-link" routerLink="/customers"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+        <div class="col-md-6 offset-3">
+            <h2 class="text-primary m-3 text-center">Update a Customer</h2>
+            <form [formGroup]="customerGroup" (ngSubmit)="handelForme()">
+                <div class="form-group mb-3">
+                <label for="exampleInputEmail1">Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="nom" aria-describedby="emailHelp" placeholder="Enter Name">
+                <span class="text-danger" 
+                    *ngIf="customerGroup.controls['nom'].touched 
+                            && customerGroup.controls['nom'].errors 
+                            && customerGroup.controls['nom'].errors['required']">
+                    Name is Required
+                </span>
+            </div>
+                <div class="form-group mb-3">
+                <label for="exampleInputPassword1">Email</label>
+                <input type="email" class="form-control" id="exampleInputPassword1" formControlName="email" placeholder="Enter Email">
+                <span class="text-danger" 
+                    *ngIf="customerGroup.controls['email'].touched 
+                            && customerGroup.controls['email'].errors 
+                            && customerGroup.controls['email'].errors['required']">
+                    Email is Required
+                </span>
+                <span class="text-danger" 
+                    *ngIf="customerGroup.controls['email'].touched 
+                            && customerGroup.controls['email'].errors 
+                            && customerGroup.controls['email'].errors['email']">
+                    Email is not valid
+                </span>
+                </div>
+                <button type="submit" class="btn btn-outline-primary" [disabled]="!customerGroup.valid">save <i class="fa-solid fa-user-plus"></i></button>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+
+
+
+
